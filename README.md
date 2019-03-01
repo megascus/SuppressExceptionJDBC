@@ -36,6 +36,8 @@ while(sers.next()) {
 }
 ```
 
-## 制約事項
+## 制限事項
 
 Connectionインターフェースをそのまま使用する場合はSQLExceptionが投げられなくてもSQLExceptionをハンドリングする必要があります。
+
+このライブラリはいくつかの点でJDBC標準には準拠していません。ご注意ください。(例えば、ResultSet#next()を呼び出さずにResultSet#getString(int)を呼び出してもSQLExceptionはスローされない。)
