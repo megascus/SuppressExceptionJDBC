@@ -41,3 +41,5 @@ while(sers.next()) {
 Connectionインターフェースをそのまま使用する場合はSQLExceptionが投げられなくてもSQLExceptionをハンドリングする必要があります。
 
 このライブラリはいくつかの点でJDBC標準には準拠していません。ご注意ください。(例えば、ResultSet#next()を呼び出さずにResultSet#getString(int)を呼び出してもSQLExceptionはスローされない。)
+
+SEDeriver#jdbcCompliant()は委譲先のドライバがJDBC仕様に準拠しているかどうかにかかわらず`true`を返します。SEDeriver#connect()が呼び出されるまで委譲先のドライバが不明なのと、このメソッド自体がSEDeriver#connect()より先にフレームワークから呼び出されることが多いのと、フレームワークによってはSEDeriver#jdbcCompliant()が`false`を返す場合に有効なJDBCドライバとして認識してくれないためです。
